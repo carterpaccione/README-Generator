@@ -19,7 +19,7 @@ Install Node.js. Within the terminal type, "npm i inquirer" to install the inqui
 
 Type "node index.js" into the terminal. Then follow each prompt to fill in the corresponding sections.
 
-[![Watch video](/images/screenshot.png)](/images/Usage.mkv)
+[![Watch video](/images/screenshot.png)](/images/Usage.mp4)
 
 ## License
   
