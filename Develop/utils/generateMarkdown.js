@@ -1,71 +1,101 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
+  let licenseBadge = "";
    switch(license) {
     case 'Apache':
-      return "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
-    case 'GNU':
-      return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
-    case "MIT":
-      return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
-    case "ISC":
-      return "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)";
-    default:
-      return "";
+      licenseBadge = "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+    break;
+      case 'GNU':
+      licenseBadge = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+    break;
+      case "MIT":
+      licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      break;
+      case "ISC":
+      licenseBadge = "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)";
+      break;
+      case "None":
+      licenseBadge = "";
   }
-}
+  return licenseBadge;
+};
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
+  let licenseLink = "";
   switch(license) {
     case 'Apache':
-      return "https://www.apache.org/licenses/LICENSE-2.0";
+      licenseLink = "https://www.apache.org/licenses/LICENSE-2.0";
+      break;
     case 'GNU':
-      return "https://choosealicense.com/licenses/gpl-3.0/";
+      licenseLink = "https://choosealicense.com/licenses/gpl-3.0/";
+      break;
     case "MIT":
-      return "https://choosealicense.com/licenses/mit/";
+      licenseLink = "https://choosealicense.com/licenses/mit/";
+      break;
     case "ISC":
-      return "https://choosealicense.com/licenses/isc/";
+      licenseLink = "https://choosealicense.com/licenses/isc/";
+      break;
     default:
-      return "";
+      licenseLink = "";
   }
+  return licenseLink;
 };
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if(license) {
-    licenseSection = `## ${license}
-    `
+function renderLicenseSection(licenseLink, lincense) {
+  let licenseSection = "";
+  if(licenseLink) {
+     licenseSection = `## License
+  
+Distributed under ${lincense} License. See ${licenseLink} for more information.`;
   }
-}
+  return licenseSection;
+};
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+function generateMarkdown(data, licenseSection, licenseBadge) {
+  return `# ${data.title}   ${licenseBadge}
 
-   ## Description
+## Table of Contents
 
-  ${data.description}
-  
-  ## Installation
-  
-  ${data.installation}
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [Tests](#tests)
+- [Questions](#questions)
 
-  ## Usage
+## Description
 
-  ${data.usage}
-  
-  ## Contributing
+${data.description}
 
-  ${data.contributors}
-  
-  ## Tests
-  
-  ${data.test}
-  
-  ${licenseSection}`;
+## Installation
+
+${data.installation}
+
+## Usage
+
+${data.usage}
+
+## Contributors
+
+${data.contributors}
+
+## Tests
+
+${data.test}
+
+## Questions
+
+For any questions, please contact me at: \n${data.email}.
+\nGitHub: ${data.github}
+
+${licenseSection}`;
 }
 
 export default generateMarkdown;
+export { renderLicenseBadge, renderLicenseLink, renderLicenseSection };
