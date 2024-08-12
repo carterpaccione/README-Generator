@@ -9,34 +9,24 @@ import { renderLicenseBadge, renderLicenseLink, renderLicenseSection } from './u
 
 const questions = [
     {
-        message: "Enter the title of your application.",
+        message: "Enter the title of your application:",
         type: "input",
         name: "title"
     }, 
     {
-        message: "Enter a brief description of your application.",
+        message: "Enter a brief description of your application:",
         type: "input",
         name: "description"
     },
     {
-        message: "Enter any installation instructions.",
+        message: "Enter any installation instructions:",
         type: "input",
         name: "installation"
     },
     {
-        message: "Enter usage instructions.",
+        message: "Enter usage instructions:",
         type: "input",
         name: "usage"
-    },
-    {
-        message: "Enter your contributors.",
-        type: "input",
-        name: "contributors"
-    },
-    {
-        message: "Enter any unit tests.",
-        type: "input",
-        name: "test"
     },
     {
         message: "Choose an open source license:",
@@ -45,14 +35,24 @@ const questions = [
         choices: ["Apache", "GNU", "MIT", "ISC", "None"]
     },
     {
-        message: "Enter your GitHub username.",
+        message: "Enter your contributors:",
         type: "input",
-        name: "github"
+        name: "contributors"
     },
     {
-        message: "Enter your email address.",
+        message: "Enter any unit tests:",
+        type: "input",
+        name: "test"
+    },
+    {
+        message: "Enter your email address:",
         type: "input",
         name: "email"
+    },
+    {
+        message: "Enter your GitHub username:",
+        type: "input",
+        name: "github"
     }
 ];
 
@@ -71,7 +71,6 @@ function writeToFile(fileName, data, licenseSection, licenseBadge) {
 function init() {
     inquirer.prompt(questions)
         .then((answers) => {
-            console.log(answers.license);
             let licenseBadge = renderLicenseBadge(answers.license);
             let licenseLink = renderLicenseLink(answers.license);
             let licenseSection = renderLicenseSection(licenseLink, answers.license);
