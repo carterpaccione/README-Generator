@@ -27,7 +27,7 @@ Distributed under MIT License. See https://choosealicense.com/licenses/mit/ for 
 
 ## Contributing
 
-These are the contributors.
+Test Names.
 
 ## Tests
 
