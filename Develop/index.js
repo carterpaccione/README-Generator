@@ -12,7 +12,7 @@ const questions = [
         message: "Enter the title of your application:",
         type: "input",
         name: "title"
-    }, 
+    },
     {
         message: "Enter a brief description of your application:",
         type: "input",
@@ -47,7 +47,15 @@ const questions = [
     {
         message: "Enter your email address:",
         type: "input",
-        name: "email"
+        name: "email",
+        validate: (answer) => {
+            if(!answer.includes("@") || !answer.includes(".com")) {
+                return "Please enter a valid email address."
+            } else {
+                return true;
+            }
+        }
+
     },
     {
         message: "Enter your GitHub username:",
@@ -75,8 +83,8 @@ function init() {
             let licenseLink = renderLicenseLink(answers.license);
             let licenseSection = renderLicenseSection(licenseLink, answers.license);
             writeToFile("README.md", answers, licenseSection, licenseBadge);
-        });
-}
+        })
+};
 
 // Function call to initialize app
 init();
