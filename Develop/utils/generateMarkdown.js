@@ -94,7 +94,7 @@ ${data.test}
 ## Questions
 
 For any questions, please contact me at: \n${data.email}.
-\nGitHub: ${data.github}`;
+\nGitHub: github.com/${data.github}`;
 }
 
 export default generateMarkdown;
